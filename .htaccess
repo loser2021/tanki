@@ -1,0 +1,77 @@
+#AddDefaultCharset utf8
+DirectoryIndex index.php
+RewriteEngine On
+
+
+#RewriteCond %{HTTPS} =on 
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L]
+
+# Основной домен
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Основные страницы
+RewriteRule ^login(/?)+$ login.php?menu=login [L]
+RewriteRule ^reg(/?)+$ reg.php?menu=reg [L]
+RewriteRule ^recovery(/?)+$ recovery.php?menu=recovery [L]
+
+# Основные страницы
+RewriteRule ^index.html$ index.php [L]
+RewriteRule ^user$ user.php [L]
+RewriteRule ^stat(/?)+$ index.php?menu=stat [L]
+RewriteRule ^rules(/?)+$ index.php?menu=rules [L]
+RewriteRule ^news(/?)+$ index.php?menu=news [L]
+RewriteRule ^about(/?)+$ index.php?menu=about [L]
+RewriteRule ^contest(/?)+$ index.php?menu=contest [L]
+RewriteRule ^helpme(/?)+$ index.php?menu=helpme [L]
+RewriteRule ^guaranteed(/?)+$ index.php?menu=guaranteed [L]
+RewriteRule ^signup/key/(.*)(/?)+$ index.php?menu=signup&key=$1 [L]
+RewriteRule ^signup(/?)+$ index.php?menu=signup [L]
+RewriteRule ^recovery(/?)+$ index.php?menu=recovery [L]
+RewriteRule ^reklama(/?)+$ index.php?menu=reklama [L]
+RewriteRule ^users(/?)+$ index.php?menu=users [L]
+# чат
+RewriteRule ^chat/([a-z]+)/([a-zA-Z0-9]+)(/?)+$ index.php?menu=chat&t=$1&id=$2 [L]
+RewriteRule ^account/chat(/?)+$ index.php?menu=account&sel=chat [L]
+# Отзывы
+RewriteRule ^otziv(/?)+$ index.php?menu=otziv [L]
+
+
+# Аккаунт
+RewriteRule ^calculator(/?)+$ user.php?menu=calculator [L]
+RewriteRule ^daily(/?)+$ user.php?menu=daily [L]
+RewriteRule ^training(/?)+$ user.php?menu=training [L]
+RewriteRule ^user_bonus(/?)+$ user.php?menu=user_bonus [L]
+RewriteRule ^lottery(/?)+$ user.php?menu=lottery [L]
+RewriteRule ^lottery/winners(/?)+$ user.php?menu=lottery&winners [L]
+RewriteRule ^bankomet(/?)+$ user.php?menu=bankomet [L]
+RewriteRule ^energy(/?)+$ user.php?menu=energy [L]
+RewriteRule ^wall/([-a-zA-Z0-9_]+)(/?)+$ user.php?menu=wall&name=$1 [L]
+RewriteRule ^wall(/?)+$ user.php?menu=wall [L]
+RewriteRule ^settings(/?)+$ user.php?menu=settings [L]
+RewriteRule ^insert(/?)+$ user.php?menu=insert [L]
+RewriteRule ^outpay/([0-9]+)(/?)+$ user.php?menu=outpay&pay_id=$1 [L]
+RewriteRule ^outpay(/?)+$ user.php?menu=outpay [L]
+RewriteRule ^exchange(/?)+$ user.php?menu=exchange [L]
+RewriteRule ^carpark(/?)+$ user.php?menu=carpark [L]
+RewriteRule ^claim(/?)+$ user.php?menu=claim [L]
+RewriteRule ^partnership(/?)+$ user.php?menu=partnership [L]
+RewriteRule ^myreferrals(/?)+$ user.php?menu=myreferrals [L]
+RewriteRule ^promo(/?)+$ user.php?menu=promo [L]
+RewriteRule ^chat(/?)+$ user.php?menu=chat [L]
+RewriteRule ^levels(/?)+$ user.php?menu=levels [L]
+RewriteRule ^output(/?)+$ user.php?menu=output [L]
+RewriteRule ^profile(/?)+$ user.php?menu=profile [L]
+
+#Пополнения
+RewriteRule ^insert/([-a-zA-Z0-9_]+)(/?)+$ user.php?menu=insert&plat=$1 [L]
+
+
+# Серфинг
+RewriteRule ^serfing(/?)+$ user.php?menu=account&menu=serfing [L]
+RewriteRule ^serfing/edit/([0-9]+)(/?)+$ user.php?menu=account&menu=serfing_add&advedit=$1 [L]
+RewriteRule ^serfing/delete/([0-9]+)(/?)+$ user.php?menu=account&menu=serfing&delete=$1 [L]
+RewriteRule ^serfing/add(/?)+$ user.php?menu=account&menu=serfing_add [L]
+RewriteRule ^serfing/cabinet(/?)+$ user.php?menu=account&menu=serfing_cabinet [L]
+RewriteRule ^serfing/view/([0-9]+)(/?)+$ _serfing_view.php?view=$1 [L]
+
